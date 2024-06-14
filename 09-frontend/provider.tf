@@ -6,14 +6,15 @@ terraform {
     }
   }
   backend "s3" {
-    bucket = "daws78s-remote-state"
-    key    = "expense-dev-frontend"
+    bucket = "shravan-remote-state"
+    key    = "expense-infra-dev-frontend"
     region = "us-east-1"
-    dynamodb_table = "daws78s-locking"
+    dynamodb_table = "shravan-locking"
   }
 }
 
-#provide authentication here
+
+# provide authentication here
 provider "aws" {
   region = "us-east-1"
 }

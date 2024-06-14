@@ -7,7 +7,7 @@ terraform {
   }
   backend "s3" {
     bucket = "shravan-remote-state"
-    key    = "expense-dev-sg"
+    key    = "expense-infra-dev-sg"
     region = "us-east-1"
     dynamodb_table = "shravan-locking"
   }

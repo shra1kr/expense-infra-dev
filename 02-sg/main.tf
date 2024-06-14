@@ -68,12 +68,12 @@ module "vpn" {
     project_name = var.project_name
     environment = var.environment
     sg_description = "SG for VPN instances"  
-    # vpc_id = data.aws_ssm_parameter.vpc_id.value
     vpc_id = data.aws_ssm_parameter.vpc_id.value
     common_tags = var.common_tags
     sg_name = "vpn"
     ingress_rules = var.vpn_sg_rules
 }
+
 # Db is accepting connections from backend
 resource "aws_security_group_rule" "db_backend" {
   type              = "ingress"
@@ -165,6 +165,7 @@ resource "aws_security_group_rule" "app_alb_bastion" {
   security_group_id = module.app_alb.sg_id
 }
 
+# app alb is accepting connections from frontend
 resource "aws_security_group_rule" "app_alb_frontend" {
   type              = "ingress"
   from_port         = 80
